@@ -1,0 +1,136 @@
+﻿@{
+    ViewBag.Title = "";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+@{
+    string f = "/Content/Images/";
+    string da = f + "da.png";
+    string nu = f + "nu.png";
+    string z = f + "z.png";
+    string[,] i= new string[11,5];
+    int[] r = new int[11];
+    int j, k;
+    for (j = 1; j <= 10; j++) 
+    {
+        for (k = 1; k <= 4; k++)
+        {
+            i[j, k] = z;
+        }
+    }
+    r[1] = 4; r[2] = 1; r[3] = 1; r[4] = 4; r[5] = 4; r[6] = 2; r[7] = 4; r[8] = 4; r[9] = 2; r[10] = 1;
+    if (IsPost)
+    {
+        string[] q = new string[11];
+        for (j=1;j<=10;j++)
+        {
+            q[j] = Request["q" + j.ToString()];
+            if (q[j] == "a" || q[j] == "b" || q[j] == "c" || q[j] == "d" || q[j] == "e")
+            {
+                i[j, r[j]] = da;
+            }
+            if (q[j] == "a" && r[j] != 1) { i[j, 1] = nu; }
+            if (q[j] == "b" && r[j] != 2) { i[j, 2] = nu; }
+            if (q[j] == "c" && r[j] != 3) { i[j, 3] = nu; }
+            if (q[j] == "d" && r[j] != 4) { i[j, 4] = nu; }
+        }
+    }
+}
+<div class="row">
+    <div class="col-md-3">
+        <div id="leftpanel">
+            <p>&nbsp;&nbsp;Categorii</p>
+            <ul class="categories">
+                <li><span><a href="@Url.Action("grafuri","Home")">Teoria grafurilor</a></span><hr /></li>
+                <li class="last"><span><a href="#">Grile grafuri</a></span><hr /></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div id="rightpanel">
+            <img src="~/Content/Images/p.png" height="180px" width="500" />
+            <br /><br /><font face="Calibri" color="orange"><h3><b><i>Grafuri neorientate. Grafuri Orientate. Arbori</i></b></h3><br /><br /></font>
+          <br />
+            <form method="post">
+                <ol>
+                    <li>
+                        Se consideră un graf neorientat cu 5 noduri şi 9 muchii. Care dintre următoarele şiruri de numere poate fi şirul gradelor nodurilor grafului?<br /> 
+                        <img src="@i[1,1]" />&nbsp;<input type="radio" name="q1" value="a" />&nbsp;4, 2, 6, 4, 2 <br />
+                        <img src="@i[1,2]" />&nbsp;<input type="radio" name="q1" value="b" />&nbsp;2, 2, 1, 2, 2 <br />
+                        <img src="@i[1,3]" />&nbsp;<input type="radio" name="q1" value="c" />&nbsp;1, 1, 1, 1, 1 <br />
+                        <img src="@i[1,4]" />&nbsp;<input type="radio" name="q1" value="d" />&nbsp;4, 3, 3, 4, 4 <br />
+                    </li><br />
+                    <li>
+                        Care dintre următoarele afirmaţii este adevărată pentru graful neorientat având mulţimea nodurilor X={1,2,3,4,5} şi mulţimea muchiilor U={[1,2], [1,5], [2,3], [2,4], [3,4], [4,5]}? <br />
+                        <img src="@i[2,1]" />&nbsp;<input type="radio" name="q2" value="a" />&nbsp; Este graf hamiltonian, dar nu este eulerian. <br />
+                        <img src="@i[2,2]" />&nbsp;<input type="radio" name="q2" value="b" />&nbsp; Este graf eulerian, dar nu este hamiltonian. <br />
+                        <img src="@i[2,3]" />&nbsp;<input type="radio" name="q2" value="c" />&nbsp; Este şi graf hamiltonian şi graf eulerian. <br />
+                        <img src="@i[2,4]" />&nbsp;<input type="radio" name="q2" value="d" />&nbsp; Nu este graf hamiltonian, şi nici nu este graf eulerian. <br />
+                    </li>
+                    <li>
+                        Se consideră un arbore cu rădăcină memorat cu ajutorul vectorului de ”taţi” T=(2,0,1,1,1,2). Stabiliţi care dintre nodurile arborelui sunt situate pe nivelul 3, dacă rădăcina este situată pe nivelul 1? <br />
+                        <img src="@i[3,1]" />&nbsp;<input type="radio" name="q3" value="a" />&nbsp;3 4 5 <br />
+                        <img src="@i[3,2]" />&nbsp;<input type="radio" name="q3" value="b" />&nbsp;1 <br />
+                        <img src="@i[3,3]" />&nbsp;<input type="radio" name="q3" value="c" />&nbsp;2 6 <br />
+                        <img src="@i[3,4]" />&nbsp;<input type="radio" name="q3" value="d" />&nbsp;1 2 6 <br />
+                    </li>
+                    <li>
+                        Un graf neorientat este reprezentat prin matricea de adiacenţă alăturată. Câte grafuri parţiale distincte, formate doar din noduri cu gradul egal cu 2, se pot obţine din graful dat? Două grafuri sunt distincte dacă matricele lor de adiacenţă diferă. <br />
+                        0 1 0 0 1 <br />1 0 1 1 0 <br />0 1 0 1 1<br /> 0 1 1 0 1 <br />1 0 1 1 0 <br />
+                        <img src="@i[4,1]" />&nbsp;<input type="radio" name="q4" value="a" />&nbsp;3<br />
+                        <img src="@i[4,2]" />&nbsp;<input type="radio" name="q4" value="b" />&nbsp;1<br />
+                        <img src="@i[4,3]" />&nbsp;<input type="radio" name="q4" value="c" />&nbsp;2<br />
+                        <img src="@i[4,4]" />&nbsp;<input type="radio" name="q4" value="d" />&nbsp;0<br />
+                    </li>
+                    <li>
+                        Într-un arbore cu rădăcină, nivelul unui nod este egal cu lungimea lanţului format din noduri distincte care uneşte rădăcina cu acel nod. Care dintre noduri trebuie ales ca rădăcină în arborele din figura alăturată astfel încât pe fiecare nivel să se găsească un număr impar de noduri? <br />
+                        <img src="@i[5,1]" />&nbsp;<input type="radio" name="q5" value="a" />&nbsp;2 <br />
+                        <img src="@i[5,2]" />&nbsp;<input type="radio" name="q5" value="b" />&nbsp;3 <br />
+                        <img src="@i[5,3]" />&nbsp;<input type="radio" name="q5" value="c" />&nbsp;6 <br />
+                        <img src="@i[5,4]" />&nbsp;<input type="radio" name="q5" value="d" />&nbsp;4 <br />
+                    </li>
+                    <li>
+                        Se consideră un graf neorientat cu 5 noduri, etichetate cu câte o  literă distinctă din mulţimea {a, b, c, d, e}, în care orice nod etichetat cu o vocală este adiacent cu toate nodurile etichetate cu consoane şi numai cu acestea, iar orice nod etichetat cu o consoană este adiacent numai cu nodurile etichetate cu vocale. Câte muchii are acest graf? <br />
+                        <img src="@i[6,1]" />&nbsp;<input type="radio" name="q6" value="a" />&nbsp;12 <br />
+                        <img src="@i[6,2]" />&nbsp;<input type="radio" name="q6" value="b" />&nbsp;6 <br />
+                        <img src="@i[6,3]" />&nbsp;<input type="radio" name="q6" value="c" />&nbsp;4 <br />
+                        <img src="@i[6,4]" />&nbsp;<input type="radio" name="q6" value="d" />&nbsp;3 <br />
+                    </li>
+                    <li>
+                        Graful orientat G este reprezentat prin matricea de adiacenţă alăturată. Câte vârfuri din graful dat au gradul interior egal cu gradul exterior? <br />
+                        0 1 0 0 1<br /> 1 0 1 0 0<br /> 0 0 0 1 1<br /> 0 1 0 0 1<br /> 1 0 0 0 0 <br />
+                        <img src="@i[7,1]" />&nbsp;<input type="radio" name="q7" value="a" />&nbsp;0 <br />
+                        <img src="@i[7,2]" />&nbsp;<input type="radio" name="q7" value="b" />&nbsp;1 <br />
+                        <img src="@i[7,3]" />&nbsp;<input type="radio" name="q7" value="c" />&nbsp;3 <br />
+                        <img src="@i[7,4]" />&nbsp;<input type="radio" name="q7" value="d" />&nbsp;2 <br />
+                    </li>
+                    <li>
+                        Se consideră graful neorientat cu nodurile numerotate de la 1 la 6 şi având muchiile [1,2], [2,3], [2,5], [2,6], [3,4], [4,5], [4,6], [5,6]. Câte lanţuri elementare, distincte şi de lungime 3 există de la nodul 1 la nodul 4 în graful dat? Două lanţuri sunt distincte dacă diferă prin cel puţin o muchie. <br />
+                        <img src="@i[8,1]" />&nbsp;<input type="radio" name="q8" value="a" />&nbsp;2 <br />
+                        <img src="@i[8,2]" />&nbsp;<input type="radio" name="q8" value="b" />&nbsp;0 <br />
+                        <img src="@i[8,3]" />&nbsp;<input type="radio" name="q8" value="c" />&nbsp;4 <br />
+                        <img src="@i[8,4]" />&nbsp;<input type="radio" name="q8" value="d" />&nbsp;3 <br />
+                    </li>
+                    <li>
+                        Care este numărul minim de muchii care trebuie eliminate dintr-un graf neorientat complet cu 100 de noduri astfel încât graful parţial obţinut să fie eulerian? <br />
+                        <img src="@i[9,1]" />&nbsp;<input type="radio" name="q9" value="a" />&nbsp;4851 <br />
+                        <img src="@i[9,2]" />&nbsp;<input type="radio" name="q9" value="b" />&nbsp;50 <br />
+                        <img src="@i[9,3]" />&nbsp;<input type="radio" name="q9" value="c" />&nbsp;0 <br />
+                        <img src="@i[9,4]" />&nbsp;<input type="radio" name="q9" value="d" />&nbsp;100 <br />
+                    </li>
+                    <li>
+                        Se consideră graful neorientat cu 6 noduri, definit cu ajutorul listelor de adiacenţă alăturate. Care dintre mulţimile următoare de noduri are toate elementele extremităţi ale unor lanţuri elementare de lungime 2 cu cealaltă extremitate în nodul 5? <br />
+                        1: 4 5 6<br />2: 5<br />3: 4<br />4: 1,3<br />5: 1,2,6<br />6: 1,5<br />
+                        <img src="@i[10,1]" />&nbsp;<input type="radio" name="q10" value="a" />&nbsp;{1,4,6}<br />
+                        <img src="@i[10,2]" />&nbsp;<input type="radio" name="q10" value="b" />&nbsp;{2}<br />
+                        <img src="@i[10,3]" />&nbsp;<input type="radio" name="q10" value="c" />&nbsp;{3} <br />
+                        <img src="@i[10,4]" />&nbsp;<input type="radio" name="q10" value="d" />&nbsp;{2,6} <br />
+                    </li>
+                    <br />
+                </ol>
+                <input type="submit" value="Trimite" />
+            </form><br />
+        </div>  <br />
+    </div><br />
+
+</div>

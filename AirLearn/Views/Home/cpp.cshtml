@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "cpp";
+}
+<script src="~/Scripts/codemirror.js"></script>
+<link rel="stylesheet" href="~/Content/codemirror.css">
+<script src="~/Scripts/clike.js"></script>
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/matchbrackets.js"></script>
+<script>
+    jQuery(document).ready(function () {
+        jQuery('.tabs .tab-links a').on('click', function (e) {
+            var currentAttrValue = jQuery(this).attr('href');
+
+            // Show/Hide Tabs
+            jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+
+            // Change/remove current tab to active
+            jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+
+            e.preventDefault();
+        });
+    });
+
+
+</script>
+<style>
+    .CodeMirror {
+        border-top: 0.5px solid gray;
+        border-bottom: 1px solid gray;
+    }
+</style>
+<br /><br />
+<h2>Web-based programming model</h2>
+<h4>Note: You must use file reading (input file - data.in, output file - data.out)</h4>
+@{
+    var f=Server.MapPath("~/Content/documente/");
+    if (IsPost)
+    {
+        string s = Request.Unvalidated["cpp"];
+        string d = Request.Unvalidated["in"];
+        ViewBag.fisier = "main.cpp";
+        File.WriteAllText(f+"main.cpp", s);
+        File.WriteAllText(f+"data.in", d);
+        ViewBag.i = d;
+    }
+}
+<div>
+    <form method="post">
+            <textarea id="cpp" name="cpp">@Html.Action("afis_sursa", "Home", new { fisier = ViewBag.fisier })</textarea>
+            
+        <br /><br /><div class="tabs">
+            <ul class="tab-links">
+                <li class="active"><a href="#tab1">Compile</a></li>
+                <li><a href="#tab2">data.in</a></li>
+                <li><a href="#tab3">data.out</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="tab1" class="tab active">
+                    <p id="sc">@ViewBag.comp</p>
+                </div>
+                <div id="tab2" class="tab">
+                    &nbsp;&nbsp;<textarea id="in" name="in" rows="7" cols="70">@ViewBag.i</textarea>
+                </div>
+
+                <div id="tab3" class="tab">
+                    <p id="out">@Html.Raw(ViewBag.o)</p>
+                </div>
+            </div> <br /><br />
+        </div><p>Save before compiling!</p>
+<br /><input type="submit" value="Save" />
+<a class="btn btn-default" href="@Url.Action("cpp", "Home", new { sw = true, fisier = "main.cpp" })">Compile & Run</a>
+
+    </form>
+</div>
+<script>
+    var cppEditor = CodeMirror.fromTextArea(document.getElementById("cpp"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: "text/x-c++src"
+    });
+</script>
+<br /><br />
+
+

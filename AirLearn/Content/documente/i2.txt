@@ -1,0 +1,24 @@
+#include <fstream>
+#include <vector>
+using namespace std;
+ifstream fin ("date.in");
+ofstream fout ("date.out");
+int n,m,a[100][100],i,j,x,y;
+vector<int> G[100];
+int main()
+{
+	fin>>n>>m;
+	for (i=1;i<=m;i++)
+	{
+		fin>>x>>y;
+		G[x].push_back(y);
+		G[y].push_back(x);
+	}
+	for (i=1;i<=n;i++)
+	{
+		for (j=0;j<=G[i].size();j++)
+			fout<<G[i][j]<<" ";
+		fout<<'\n';
+	}
+	return 0;
+}

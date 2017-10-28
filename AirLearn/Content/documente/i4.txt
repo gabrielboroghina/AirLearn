@@ -1,0 +1,18 @@
+void BFS(int s)
+{
+	int i,p,u,c[100],x;
+	v[i]=1; //am vizitat nodul s
+	p=u=1; c[1]=s;
+	while (p<=u)
+	{
+		x=c[p];
+		for (i=1;i<=n;i++)
+			if (v[i]==0&&a[x][i])
+			{
+				u++;
+				c[u]=i;
+				v[i]=1;
+			}
+		p++;
+	}
+}

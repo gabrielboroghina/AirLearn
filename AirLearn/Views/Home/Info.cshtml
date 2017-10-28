@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<style>
+
+</style>
+<div class="row">
+    <div class="col-md-3">
+        <div id="leftpanel">
+            <p>&nbsp;&nbsp;Categorii</p>
+            <ul class="categories">
+                <li><span><a href="@Url.Action("grafuri","Home")">Teoria grafurilor</a></span><hr /></li>
+                <li class ="last"><span><a href="@Url.Action("grileinfo","Home")">Grile grafuri</a></span><hr /></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div id="rightpanel">
+            <br />
+            <img src="~/Content/Images/p.png" height="180px" width="500" />
+            <br /><br /><font face="Calibri" color="orange"><h3><b><i>Informatică</i></b></h3><br /><br /></font>
+            <h4>
+                <font color="green">Puteți utiliza următoarele materiale:</font>
+            </h4><br /><br />
+            <font size="5px">
+                &nbsp;&nbsp;<img src="~/Content/Images/marker.jpg" width="10" height="10"/> &nbsp;&nbsp;<a href="@Url.Action("grafuri", "Home")">Teoria grafurilor</a><br />
+                &nbsp;&nbsp;<img src="~/Content/Images/marker.jpg" width="10" height="10"/> &nbsp;&nbsp;<a href="@Url.Action("grileinfo", "Home")">Grile teoria grafurilor</a>
+        </div></font>
+    </div>
+
+</div>

@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<script src="~/Scripts/prism.js"></script>
+<div class="row">
+    <div class="col-md-3">
+        <div id="leftpanel">
+            <p>&nbsp;&nbsp;Categorii</p>
+            <ul class="categories">
+                <li><span><a href="#">Teoria grafurilor</a></span><hr /></li>
+                <li><span><a href="@Url.Action("grileinfo","Home")">Grile grafuri</a></span><hr /></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div id="rightpanel">
+            <br />
+            <img src="~/Content/Images/graph.gif" height="250px" width="500" />
+            <br /><br /><font face="consolas" color="purple" size="6px">Teoria grafurilor</font>
+    <br /><br />
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;Un <b>graf</b> (orientat sau neorientat) este o pereche ordonată de mulțimi G=(V, E).
+             Mulţimea V este o mulţime nevidă şi finită de elemente denumite <b>vârfurile</b> grafului.
+             Mulțimea E este o multime de perechi de vârfuri din graf. În cazul grafurilor orientate, perechile de vărfuri din mulţimea E sunt ordonate şi sunt denumite <b>arce</b>; în cazul grafurilor neorientate, 
+            perechile de vârfuri din multimea E sunt neordonate şi sunt denumite <b>muchii</b>. 
+    </p><br /><h4><i>Gradul unui vârf</i></h4><br />
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;Fie G=(V,E) un graf neorientat. Se numește grad al unui vârf din graf numărul de muchii incidente cu vârful respectiv. Gradul vârfului se notează d(x).
+        <br />Se numește vârf izolat un vârf care are gradul 0. Se numește vârf terminal un vârf cu gradul 1.
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;Fie G=(V,E) un graf orientat și x un vârf din graf. Gradul exterior al vârfului x se notează d<sup>+</sup>(x) și este egal cu numărul de arce care au extremitate inițială pe x. Gradul interior al vârfului x se notează d<sup>-</sup>(x) și este egal cu numărul de arce care au extremitate finală pe x.
+    </p><br /><h4><i>Lanţ, ciclu, drum, circuit</i></h4><br />
+    <p>
+        Se numeşte <i>lanţ</i>, într-un graf orientat sau neorientat, o secvenţă de vârfuri [x1, x2,...,x<sub>p</sub>], cu proprietatea că oricare două vârfuri consecutive din secvenţă sunt adiacente.
+        Un lanţ se numește elementar dacă nu conține de mai multe ori acelaşi vârf. Un lanț este simplu dacă nu contine de mai multe ori aceeaşi muchie.
+      <br /> Se numeşte <i>ciclu</i>, într-un graf orientat sau neorientat, un lanț simplu pentru care extremitatea inilială coincide cu extremitatea finală. 
+        Se numeşte ciclu elementar un ciclu care nu conţine de mai multe ori acelaşi vârf (exceptând extremităţile sale).
+        Se numeşte <i>drum</i> într-un graf orientat o secvenţă de vârfuri (x1, x2,...,x<sub>p</sub>) astfel încât pentru oricare două vârfuri consecutive în secventă x<sub>i</sub>, x<sub>i+1</sub> 
+        există arcul (x<sub>i</sub> x<sub>i+1</sub>).
+        <br />Drumul se numeşte drum elementar dacă nu conține de mai multe ori acelaşi vârf. 
+        Drumul se numeşte simplu dacă nu conține de mai multe ori acelaşi arc.
+        Se numeşte <i>circuit</i> într-un graf orientat un drum simplu, pentru care extremitatea inițială coincide cu cea finală. Circuitul se numeşte elementar dacă nu conține de mai multe ori acelaşi vârf (exceptând extremităţile).
+        <br /><br />Un lanț/drum/ciclu/circuit elementar se numește <i>hamiltonian</i> dacă el trece prin toate vârfurile grafului.
+        Un lanț/drum/ciclu/circuit se numește <i>eulerian</i> dacă trece prin fiecare muchie/arc al grafului exact o dată.
+    </p>
+            <h4><i>Reprezentarea grafurilor în memorie</i></h4><br />
+            <h5>Reprezentarea prin matrice de adiacanță</h5><br />
+    <p>
+        Fie G=(V,E) un graf neorientat. Fie n numărul de vârfuri din graf. Matricea de adiacență este o matrice pătratică, având n linii și n coloane, 
+        cu elemente din mulțimea {0,1}, astfel: A[i][j]=1, dacă există muchia [i,j] și A[i][j]=0, în caz contrar. <br />Exemplu
+        <img src="~/Content/Images/ma.png" width="400px" height="200px"/>
+    </p>
+            Fie G=(V,E) un graf orientat. Fie n numărul de vârfuri din graf. Matricea de adiacență este o matrice pătratică, având n linii și n coloane,
+            cu elemente din mulțimea {0,1}, astfel: A[i][j]=1, dacă există arcul (i,j) și A[i][j]=0, în caz contrar.
+            Mai jos este prezentat programul C++ care creează matricea de adiacență pentru un graf neorientat.
+
+           <pre><code class="language-cpp">@Html.Action("afis_sursa", "Home", new {fisier="i1.txt"})</code></pre>
+           <br /><a class="btn btn-default" href="@Url.Action("cpp", "Home", new { sw=false, fisier="i1.txt"})">Compilare & Executare</a>    
+    <br /><h5>Reprezentarea prin matrice de adiacanță</h5><br />
+        <p>
+            Fie G=(V,E) un graf neorientat sau orientat cu n vârfuri. Pentru a reprezenta graful prin liste de adiacență, vom utiliza un vector cu n componente, în care vom reține pentru fiecare vârf din graf lista sa de adiacență.
+            Lista de adiacență a vârfului x va conține toate vârfurile y cu proprietatea că există muchia [x,y](pentru graf neorientat), respectiv există arcul (x,y)(pentru graf orientat).
+        </p> Mai jos este prezentat programul care creează listele de adiacență pentru un graf neorientat implementat cu ajutorul STL (Standard Template Library).
+            <br /><pre><code class="language-cpp">@Html.Action("afis_sursa", "Home", new {fisier="i2.txt"})</code></pre>
+    <br /><a class="btn btn-default" href="@Url.Action("cpp", "Home", new { sw=false, fisier="i2.txt"})">Compilare & Executare</a>
+            <br /><h4><i>Parcurgerea grafurilor</i></h4><br />
+            Există două metode fundamentale de parcurgere a grafurilor: parcurgerea în adâncime (Depth First Search - DFS) și parcurgerea în lăţime (Breadth First Search - BFS).
+            <br /><h5>Parcurgerea în adâncime</h5><br />
+           <p>
+               Parcurgerea începe cu un vârf iniţial, denumit vârf de start. Se vizitează mai întâi vârful de start.
+                La vizitarea unui vârf se efectuează asupra informaţiilor asociau vârfului o serie de operaţii specifice problemei.
+               Se vizitează apoi primul vecin nevizitat al vârfului de start. Vârful y este considerat vecin al vârfului x daci există muchia [x, y] (pentru graf neorientat), respectiv arcul (x,y) (pentru graf orientat).
+               Se vizitează în continuare primul vecin nevizitat al primului vecin al vârfului de start, 
+               și aşa mai departe, mergând în adâncime până când ajungem într-un vârf care nu mai are vecini nevizitaţi. 
+               Când ajungem într-un astfel de vârf, revenim la vârful său părinte (vârful din care acest nod a fost vizitat). Dacă acest vârf mai are vecini nevizitaţi, alegem primul vecin nevizitat al său și continuăm parcurgerea în acclași mod. 
+               Dacă nici acest vârf nu mai are vecini nevizitaţi, revenim în vârful său părinte și continuăm în acelaşi mod, până când toate vârfurile accesibile din vârful de start sunt vizitate.
+           </p>
+            </p> Mai jos este prezentată funcția DFS pentru un graf dat prin matricea de adiacență.
+            <br /><pre><code class="language-cpp">@Html.Action("afis_sursa", "Home", new {fisier="i3.txt"})</code></pre>
+
+            <br /><h5>Parcurgerea în lățime</h5><br />
+            <p>
+                Parcurgerea în lăţime începe, de asemenea, cu un vârf iniţial, denumit vârf de start. Se vizitează mai întâi vârful de start.
+                 Se vizitează în ordine toți vecinii nevizitati ai vârfului de start. Apoi se vizitează în ordine toţi vecinii nevizitați ai vecinilor vârfului de start şi aşa mai departe,
+                 până la epuizarea tuturor vârfurilor accesibile din vârful de start.
+            </p>
+            </p> Mai jos este prezentată funcția BFS pentru un graf dat prin matricea de adiacență.
+            <br /><pre><code class="language-cpp">@Html.Action("afis_sursa", "Home", new {fisier="i4.txt"})</code></pre>
+            <br />
+        </div>
+        </div>
+</div>

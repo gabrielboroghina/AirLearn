@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Air Learn";
+}
+<script src="~/Scripts/js-image-slider.js" type="text/javascript"></script>
+<div class="jumbotron">
+    <div id="sliderFrame">
+        <div id="slider">
+            <img src="~/Content/Images/1.png" alt="Programare" />
+            <img src="~/Content/Images/2.jpg" alt="Biologie" />
+            <img src="~/Content/Images/3.jpg" alt="Chimie" />
+            <img src="~/Content/Images/4.png" alt="Fizică" />
+        </div>
+    </div>
+    <br /><br />
+    <center>
+        <a href="@Url.Action("bio", "Home")" class="btn1">&nbsp;<img src="~/Content/Images/biology.png" height="75" width="75"><br />&nbsp;&nbsp;Biologie&nbsp;&nbsp;</a>
+        <a href="@Url.Action("Info", "Home")" class="btn1">&nbsp;&nbsp;<img src="~/Content/Images/info.ico" height="75" width="75"><br />Informatică</a>
+        <a href="@Url.Action("cpp", "Home", new { sw=false, fisier="s0.txt"})" class="btn1"><img src="~/Content/Images/cpp.png" height="75"><br />Online C++</a>
+    </center>
+</div>
+
+<div class="row">
+    <div class="col-md-4" style="border-radius:10px; background-color:#EBEBE0;">
+        <h2>Educație online</h2>
+        <p>
+            Este necesar ca elevii să aprofundeze diferitele subiecte studiate la școală și să aplice cunoștințele dobândite.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Informații structurate</h2>
+        <p>Puteți studia lecții pe scurt însoțite de exemple sau animații.</p>
+    </div>
+    <div class="col-md-4" style="border-radius:10px; background-color:#EBEBE0;">
+        <h2>Teste grilă</h2>
+        <p>
+            Itemi elaborați pentru verificarea lecțiilor cu corectare imediată.
+        </p><br />
+    </div><br /><br />
+</div><br /><br />

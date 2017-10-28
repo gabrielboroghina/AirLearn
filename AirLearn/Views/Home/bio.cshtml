@@ -1,0 +1,146 @@
+﻿@{
+    ViewBag.Title = "";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+@{
+    string f = "/Content/Images/";
+    string da = f + "da.png";
+    string nu = f + "nu.png";
+    string z = f + "z.png";
+    string[,] i = new string[11, 6];
+    int[] r = new int[11];
+    int j, k;
+    for (j = 1; j <= 10; j++)
+    {
+        for (k = 1; k <= 5; k++)
+        {
+            i[j, k] = z;
+        }
+    }
+    r[1] = 3; r[2] = 4; r[3] = 1; r[4] = 4; r[5] = 5; r[6] = 2; r[7] = 3; r[8] = 5; r[9] = 2; r[10] = 2;
+    if (IsPost)
+    {
+        string[] q = new string[11];
+        for (j = 1; j <= 10; j++)
+        {
+            q[j] = Request["q" + j.ToString()];
+            if (q[j] == "a" || q[j] == "b" || q[j] == "c" || q[j] == "d" || q[j] == "e")
+            {
+                i[j, r[j]] = da;
+            }
+            if (q[j] == "a" && r[j] != 1) { i[j, 1] = nu; }
+            if (q[j] == "b" && r[j] != 2) { i[j, 2] = nu; }
+            if (q[j] == "c" && r[j] != 3) { i[j, 3] = nu; }
+            if (q[j] == "d" && r[j] != 4) { i[j, 4] = nu; }
+            if (q[j] == "e" && r[j] != 5) { i[j, 5] = nu; }
+        }
+    }
+}
+<div class="row">
+    <div class="col-md-3">
+        <div id="leftpanel">
+            <p>&nbsp;&nbsp;Categorii</p>
+            <ul class="categories">
+                <li><span><a href="#">Grile analizatori</a></span><hr /></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div id="rightpanel">
+            <img src="~/Content/Images/analizatori.jpg" />
+            <br /><br /><font face="Calibri" color="orange"><h3><b><i>Analizatorii: vizual, auditiv, cutanat și olfactiv.</i></b></h3><br /><br /></font>
+            <br />
+            <form method="post">
+                <ol>
+                    <li>
+                        Despre urechea medie sunt adevărate următoarele afirmații : <br />
+                        <img src="@i[1,1]" />&nbsp;<input type="radio" name="q1" value="a" />&nbsp;Peretele ei lateral prezintă fereastra ovală  <br />
+                        <img src="@i[1,2]" />&nbsp;<input type="radio" name="q1" value="b" />&nbsp;Peretele ei lateral prezintă fereastra rotundă  <br />
+                        <img src="@i[1,3]" />&nbsp;<input type="radio" name="q1" value="c" />&nbsp;Conține în interiorul său un lanț articular <br />
+                        <img src="@i[1,4]" />&nbsp;<input type="radio" name="q1" value="d" />&nbsp;Peretele ei medial este reprezentat de timpan  <br />
+                        <img src="@i[1,5]" />&nbsp;<input type="radio" name="q1" value="e" />&nbsp;Peretele ei posterior prezintă  comunicarea cu nazofaringele  <br />
+                    </li>
+                    <br />
+                    <li>
+                        Din mediile refringente fac parte următoarele, cu excepția: <br />
+                        <img src="@i[2,1]" />&nbsp;<input type="radio" name="q2" value="a" />&nbsp;Cristalinul <br />
+                        <img src="@i[2,2]" />&nbsp;<input type="radio" name="q2" value="b" />&nbsp;Corpul vitros  <br />
+                        <img src="@i[2,3]" />&nbsp;<input type="radio" name="q2" value="c" />&nbsp;Umoarea apoasă <br />
+                        <img src="@i[2,4]" />&nbsp;<input type="radio" name="q2" value="d" />&nbsp;Retina<br />
+                        <img src="@i[2,5]" />&nbsp;<input type="radio" name="q2" value="e" />&nbsp;Corneea<br />
+                    </li>
+                    <li>
+                        Despre aparatul dioptric ocular sunt adevărate următoarele, cu excepția: <br />
+                        <img src="@i[3,1]" />&nbsp;<input type="radio" name="q3" value="a" />&nbsp;Cea mai mare parte a puterii de refracție aparține feței posterioare a corneei  <br />
+                        <img src="@i[3,2]" />&nbsp;<input type="radio" name="q3" value="b" />&nbsp;Are o putere totală de aproximativ 60 de dioptrii <br />
+                        <img src="@i[3,3]" />&nbsp;<input type="radio" name="q3" value="c" />&nbsp;Este format din cornee și cristalin<br />
+                        <img src="@i[3,4]" />&nbsp;<input type="radio" name="q3" value="d" />&nbsp;Are centrul optic la 17 mm anterior de retină <br />
+                        <img src="@i[3,5]" />&nbsp;<input type="radio" name="q3" value="e" />&nbsp;Razele paralele care vin de la o distanță mai mare de 6m vor focaliza pe retină  <br />
+                    </li>
+                    <li>
+                        Despre mugurii gustativi este adevărat că: <br />
+                        <img src="@i[4,1]" />&nbsp;<input type="radio" name="q4" value="a" />&nbsp;Au formă sferică <br />
+                        <img src="@i[4,2]" />&nbsp;<input type="radio" name="q4" value="b" />&nbsp;Prezintă la polul bazal un microvil <br />
+                        <img src="@i[4,3]" />&nbsp;<input type="radio" name="q4" value="c" />&nbsp;Se găsesc la nivelul papilelor filiforme<br />
+                        <img src="@i[4,4]" />&nbsp;<input type="radio" name="q4" value="d" />&nbsp;Se găsesc la nivelul papilelor fungiforme <br />
+                        <img src="@i[4,5]" />&nbsp;<input type="radio" name="q4" value="e" />&nbsp;Sunt mecanoreceptori <br />
+                    </li>
+                    <li>
+                        Despre senzațiile gustative primare este adevărată următoarea afirmație: <br />
+                        <img src="@i[5,1]" />&nbsp;<input type="radio" name="q5" value="a" />&nbsp;Zona de percepție pentru sărat este în central feței dorsale a limbii  <br />
+                        <img src="@i[5,2]" />&nbsp;<input type="radio" name="q5" value="b" />&nbsp;Cei mai mulți muguri gustativi pot fi stimulați de un singur stimul gustativ  <br />
+                        <img src="@i[5,3]" />&nbsp;<input type="radio" name="q5" value="c" />&nbsp;Nu se pot delimita zone caracteristice pentru percepția unu anumit gust fundamental  <br />
+                        <img src="@i[5,4]" />&nbsp;<input type="radio" name="q5" value="d" />&nbsp;Zona de percepție pentru amar este situată la vârful limbii  <br />
+                        <img src="@i[5,5]" />&nbsp;<input type="radio" name="q5" value="e" />&nbsp;Toate afirmațiile sunt false  <br />
+                    </li>
+                    <li>
+                        Următoarea afirmație despre piele nu este adevărată: <br />
+                        <img src="@i[6,1]" />&nbsp;<input type="radio" name="q6" value="a" />&nbsp;Conține receptori tactili  <br />
+                        <img src="@i[6,2]" />&nbsp;<input type="radio" name="q6" value="b" />&nbsp;Epidermul conține numeroase vase de sânge  <br />
+                        <img src="@i[6,3]" />&nbsp;<input type="radio" name="q6" value="c" />&nbsp;Se continuă la nivelul orificiilor cu mucoasele <br />
+                        <img src="@i[6,4]" />&nbsp;<input type="radio" name="q6" value="d" />&nbsp;Este un imens câmp receptor  <br />
+                        <img src="@i[6,5]" />&nbsp;<input type="radio" name="q6" value="e" />&nbsp;Epidermul conține terminații nervoase libere  <br />
+                    </li>
+                    <li>
+                        Despre analizatorul olfactiv este adevărat: <br />
+                        <img src="@i[7,1]" />&nbsp;<input type="radio" name="q7" value="a" />&nbsp;Olfacția este bine dezvoltată la om  <br />
+                        <img src="@i[7,2]" />&nbsp;<input type="radio" name="q7" value="b" />&nbsp;Receptorii analizatorului olfacti se află în partea inferioară a foselor nazale  <br />
+                        <img src="@i[7,3]" />&nbsp;<input type="radio" name="q7" value="c" />&nbsp;Celulele bipolare din mucoasa olfactivă au rol de protoneuron  <br />
+                        <img src="@i[7,4]" />&nbsp;<input type="radio" name="q7" value="d" />&nbsp;Nervii olfactivi pornesc de la nivelul bulbului olfactiv  <br />
+                        <img src="@i[7,5]" />&nbsp;<input type="radio" name="q7" value="e" />&nbsp;Tractul olfactiv ajunge pe fața medială a lobului frontal  <br />
+                    </li>
+                    <li>
+                        Legat de distanța dintre centrul optic și retină este adevărat :<br />
+                        <img src="@i[8,1]" />&nbsp;<input type="radio" name="q8" value="a" />&nbsp;Persoanele hipermetrope apropie obiectele de ochi pentru a vedea clar  <br />
+                        <img src="@i[8,2]" />&nbsp;<input type="radio" name="q8" value="b" />&nbsp;Persoanele hipometrope îndepărtează obiectele de ochi pentru a vedea clar  <br />
+                        <img src="@i[8,3]" />&nbsp;<input type="radio" name="q8" value="c" />&nbsp;Miopia se corectează cu lentile convergente <br />
+                        <img src="@i[8,4]" />&nbsp;<input type="radio" name="q8" value="d" />&nbsp;Hipermetropia se corectează cu lentile divergente  <br />
+                        <img src="@i[8,5]" />&nbsp;<input type="radio" name="q8" value="e" />&nbsp;Ochiul emetrop este cel în care imaginea retina se află la 17mm în spatele centrului optic  <br />
+                    </li>
+                    <li>
+                        Legat de mecanismul recepției auditive este adevărat : <br />
+                        <img src="@i[9,1]" />&nbsp;<input type="radio" name="q9" value="a" />&nbsp;Perforațiile timpanului duc la surditate  <br />
+                        <img src="@i[9,2]" />&nbsp;<input type="radio" name="q9" value="b" />&nbsp;De la nivelul timpanului, undă sonoră se transmite lanțului osicular <br />
+                        <img src="@i[9,3]" />&nbsp;<input type="radio" name="q9" value="c" />&nbsp;Percepția sunetului începe la nivelul conductului auditiv extern <br />
+                        <img src="@i[9,4]" />&nbsp;<input type="radio" name="q9" value="d" />&nbsp;Înclinarea cililor celulelor auditive are același efect indiferent de direcție <br />
+                        <img src="@i[9,5]" />&nbsp;<input type="radio" name="q9" value="e" />&nbsp;Organul Corti nu se găsește pe membrane bazilară  <br />
+
+                    </li>
+                    <li>
+                        Tunica internă a globului ocular este reprezentată de : <br />
+                        <img src="@i[10,1]" />&nbsp;<input type="radio" name="q10" value="a" />&nbsp;Coroidă <br />
+                        <img src="@i[10,2]" />&nbsp;<input type="radio" name="q10" value="b" />&nbsp;Retină <br />
+                        <img src="@i[10,3]" />&nbsp;<input type="radio" name="q10" value="c" />&nbsp;Cristalin<br />
+                        <img src="@i[10,4]" />&nbsp;<input type="radio" name="q10" value="d" />&nbsp;Iris <br />
+                        <img src="@i[10,5]" />&nbsp;<input type="radio" name="q10" value="e" />&nbsp;Cornee <br />
+
+                    </li>
+                    <br />
+                </ol>
+                <input type="submit" value="Trimite" />
+            </form><br />
+        </div>  <br />
+    </div><br />
+
+</div>

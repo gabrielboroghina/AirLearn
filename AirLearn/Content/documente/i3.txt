@@ -1,0 +1,8 @@
+void DFS(int s)
+{
+	int i;
+	v[i]=1; //am vizitat nodul s
+	for (i=1;i<=n;i++)
+		if (v[i]==0&&a[i][j]==1)//daca j e nevizitat si adiacent cu s
+			DFS(j);
+}
