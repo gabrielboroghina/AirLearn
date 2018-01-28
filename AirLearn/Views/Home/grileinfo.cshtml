@@ -8,10 +8,10 @@
     string da = f + "da.png";
     string nu = f + "nu.png";
     string z = f + "z.png";
-    string[,] i= new string[11,5];
+    string[,] i = new string[11, 5];
     int[] r = new int[11];
     int j, k;
-    for (j = 1; j <= 10; j++) 
+    for (j = 1; j <= 10; j++)
     {
         for (k = 1; k <= 4; k++)
         {
@@ -22,7 +22,7 @@
     if (IsPost)
     {
         string[] q = new string[11];
-        for (j=1;j<=10;j++)
+        for (j = 1; j <= 10; j++)
         {
             q[j] = Request["q" + j.ToString()];
             if (q[j] == "a" || q[j] == "b" || q[j] == "c" || q[j] == "d" || q[j] == "e")
@@ -50,16 +50,17 @@
         <div id="rightpanel">
             <img src="~/Content/Images/p.png" height="180px" width="500" />
             <br /><br /><font face="Calibri" color="orange"><h3><b><i>Grafuri neorientate. Grafuri Orientate. Arbori</i></b></h3><br /><br /></font>
-          <br />
+            <br />
             <form method="post">
                 <ol>
                     <li>
-                        Se consideră un graf neorientat cu 5 noduri şi 9 muchii. Care dintre următoarele şiruri de numere poate fi şirul gradelor nodurilor grafului?<br /> 
+                        Se consideră un graf neorientat cu 5 noduri şi 9 muchii. Care dintre următoarele şiruri de numere poate fi şirul gradelor nodurilor grafului?<br />
                         <img src="@i[1,1]" />&nbsp;<input type="radio" name="q1" value="a" />&nbsp;4, 2, 6, 4, 2 <br />
                         <img src="@i[1,2]" />&nbsp;<input type="radio" name="q1" value="b" />&nbsp;2, 2, 1, 2, 2 <br />
                         <img src="@i[1,3]" />&nbsp;<input type="radio" name="q1" value="c" />&nbsp;1, 1, 1, 1, 1 <br />
                         <img src="@i[1,4]" />&nbsp;<input type="radio" name="q1" value="d" />&nbsp;4, 3, 3, 4, 4 <br />
-                    </li><br />
+                    </li>
+                    <br />
                     <li>
                         Care dintre următoarele afirmaţii este adevărată pentru graful neorientat având mulţimea nodurilor X={1,2,3,4,5} şi mulţimea muchiilor U={[1,2], [1,5], [2,3], [2,4], [3,4], [4,5]}? <br />
                         <img src="@i[2,1]" />&nbsp;<input type="radio" name="q2" value="a" />&nbsp; Este graf hamiltonian, dar nu este eulerian. <br />
